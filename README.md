@@ -19,7 +19,7 @@ APIサービス URL: https://xxx.xxx.io/api/API_PRODUCT_STOCK_SRV/creates/
 data-platform-api-product-stock-creates-rmq-kube には、次の API をコールするためのリソースが含まれています。  
 
 * A_ProductStock（品目在庫 - 品目在庫データ）
-* A_ProductStockAvailability（品目在庫 - 利用可能在庫データ）
+* A_ProductStockAvailability（品目在庫 - 品目在庫利用可能性データ）
 
 ## API への 値入力条件 の 初期値
 data-platform-api-product-stock-creates-rmq-kube において、API への値入力条件の初期値は、入力ファイルレイアウトの種別毎に、次の通りとなっています。  
