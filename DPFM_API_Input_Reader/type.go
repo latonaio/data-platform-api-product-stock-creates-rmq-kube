@@ -64,102 +64,50 @@ type SDC struct {
 	ServiceLabel                    string                          `json:"service_label"`
 	APIType                         string                          `json:"api_type"`
 	ProductStock                    ProductStock                    `json:"ProductStock"`
-	ProductStockByBatch             ProductStockByBatch             `json:"ProductStockByBatch"`
-	ProductStockByStorageBin        ProductStockByStorageBin        `json:"ProductStockByStorageBin"`
-	ProductStockByStorageBinByBatch ProductStockByStorageBinByBatch `json:"ProductStockByStorageBinByBatch"`
 	APISchema                       string                          `json:"api_schema"`
 	Accepter                        []string                        `json:"accepter"`
 	Deleted                         bool                            `json:"deleted"`
 }
 
 type ProductStock struct {
-	Product                   string                     `json:"Product"`
-	BusinessPartner           int                        `json:"BusinessPartner"`
-	Plant                     string                     `json:"Plant"`
-	InventoryStockType        *string                    `json:"InventoryStockType"`
-	InventorySpecialStockType *string                    `json:"InventorySpecialStockType"`
-	ProductStock              *float32                   `json:"ProductStock"`
-	ProductStockAvailability  []ProductStockAvailability `json:"ProductStockAvailability"`
-}
-
-type ProductStockByBatch struct {
-	Product                         string                            `json:"Product"`
-	BusinessPartner                 int                               `json:"BusinessPartner"`
-	Plant                           string                            `json:"Plant"`
-	Batch                           string                            `json:"Batch"`
-	InventoryStockType              *string                           `json:"InventoryStockType"`
-	InventorySpecialStockType       *string                           `json:"InventorySpecialStockType"`
-	ProductStock                    *float32                          `json:"ProductStock"`
-	ProductStockAvailabilityByBatch []ProductStockAvailabilityByBatch `json:"ProductStockAvailabilityByBatch"`
-}
-
-type ProductStockByStorageBin struct {
-	Product                              string                                 `json:"Product"`
-	BusinessPartner                      int                                    `json:"BusinessPartner"`
-	Plant                                string                                 `json:"Plant"`
-	StorageLocation                      string                                 `json:"StorageLocation"`
-	StorageBin                           string                                 `json:"StorageBin"`
-	InventoryStockType                   *string                                `json:"InventoryStockType"`
-	InventorySpecialStockType            *string                                `json:"InventorySpecialStockType"`
-	ProductStock                         *float32                               `json:"ProductStock"`
-	ProductStockAvailabilityByStorageBin []ProductStockAvailabilityByStorageBin `json:"ProductStockAvailabilityByStorageBin"`
-}
-
-type ProductStockByStorageBinByBatch struct {
-	Product                                     string                                        `json:"Product"`
-	BusinessPartner                             int                                           `json:"BusinessPartner"`
-	Plant                                       string                                        `json:"Plant"`
-	StorageLocation                             string                                        `json:"StorageLocation"`
-	StorageBin                                  string                                        `json:"StorageBin"`
-	Batch                                       string                                        `json:"Batch"`
-	InventoryStockType                          *string                                       `json:"InventoryStockType"`
-	InventorySpecialStockType                   *string                                       `json:"InventorySpecialStockType"`
-	ProductStock                                *float32                                      `json:"ProductStock"`
-	ProductStockAvailabilityByStorageBinByBatch []ProductStockAvailabilityByStorageBinByBatch `json:"ProductStockAvailabilityByStorageBinByBatch"`
+	Product                                string                     `json:"Product"`
+	BusinessPartner                        int                        `json:"BusinessPartner"`
+	Plant                                  string                     `json:"Plant"`
+	SupplyChainRelationshipID              int                        `json:"SupplyChainRelationshipID"`
+	SupplyChainRelationshipDeliveryID      int                        `json:"SupplyChainRelationshipDeliveryID"`
+	SupplyChainRelationshipDeliveryPlantID int                        `json:"SupplyChainRelationshipDeliveryPlantID"`
+	Buyer                                  int                        `json:"Buyer"`
+	Seller                                 int                        `json:"Seller"`
+	DeliverToParty                         int                        `json:"DeliverToParty"`
+	DeliverFromParty                       int                        `json:"DeliverFromParty"`
+	DeliverToPlant                         string                     `json:"DeliverToPlant"`
+	DeliverFromPlant                       string                     `json:"DeliverFromPlant"`
+	InventoryStockType                     string                     `json:"InventoryStockType"`
+	ProductStock                           *float32                   `json:"ProductStock"`
+	CreationDate                           *string                    `json:"CreationDate"`
+	CreationTime                           *string                    `json:"CreationTime"`
+	LastChangeDate                         *string                    `json:"LastChangeDate"`
+	LastChangeTime                         *string                    `json:"LastChangeTime"`
+	ProductStockAvailability               []ProductStockAvailability `json:"ProductStockAvailability"`
 }
 
 type ProductStockAvailability struct {
-	Product                      string   `json:"Product"`
-	BusinessPartner              int      `json:"BusinessPartner"`
-	Plant                        string   `json:"Plant"`
-	ProductStockAvailabilityDate string   `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string  `json:"InventoryStockType"`
-	InventorySpecialStockType    *string  `json:"InventorySpecialStockType"`
-	AvailableProductStock        *float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByBatch struct {
-	Product                      string   `json:"Product"`
-	BusinessPartner              int      `json:"BusinessPartner"`
-	Plant                        string   `json:"Plant"`
-	Batch                        string   `json:"Batch"`
-	ProductStockAvailabilityDate string   `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string  `json:"InventoryStockType"`
-	InventorySpecialStockType    *string  `json:"InventorySpecialStockType"`
-	AvailableProductStock        *float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByStorageBin struct {
-	Product                      string   `json:"Product"`
-	BusinessPartner              int      `json:"BusinessPartner"`
-	Plant                        string   `json:"Plant"`
-	StorageLocation              string   `json:"StorageLocation"`
-	StorageBin                   string   `json:"StorageBin"`
-	ProductStockAvailabilityDate string   `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string  `json:"InventoryStockType"`
-	InventorySpecialStockType    *string  `json:"InventorySpecialStockType"`
-	AvailableProductStock        *float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByStorageBinByBatch struct {
-	Product                      string  `json:"Product"`
-	BusinessPartner              int     `json:"BusinessPartner"`
-	Plant                        string  `json:"Plant"`
-	StorageLocation              string  `json:"StorageLocation"`
-	StorageBin                   string  `json:"StorageBin"`
-	Batch                        string  `json:"Batch"`
-	ProductStockAvailabilityDate string  `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string `json:"InventoryStockType"`
-	InventorySpecialStockType    *string `json:"InventorySpecialStockType"`
-	AvailableProductStock        float32 `json:"AvailableProductStock"`
+	Product									string	`json:"Product"`
+	BusinessPartner							int		`json:"BusinessPartner"`
+	Plant									string	`json:"Plant"`
+	SupplyChainRelationshipID				int		`json:"SupplyChainRelationshipID"`
+	SupplyChainRelationshipDeliveryID		int		`json:"SupplyChainRelationshipDeliveryID"`
+	SupplyChainRelationshipDeliveryPlantID	int		`json:"SupplyChainRelationshipDeliveryPlantID"`
+	Buyer									int		`json:"Buyer"`
+	Seller									int		`json:"Seller"`
+	DeliverToParty							int		`json:"DeliverToParty"`
+	DeliverFromParty						int		`json:"DeliverFromParty"`
+	DeliverToPlant							string	`json:"DeliverToPlant"`
+	DeliverFromPlant						string	`json:"DeliverFromPlant"`
+	ProductStockAvailabilityDate			string	`json:"ProductStockAvailabilityDate"`
+	AvailableProductStock					*float32 `json:"AvailableProductStock"`
+	CreationDate							*string	`json:"CreationDate"`
+	CreationTime							*string	`json:"CreationTime"`
+	LastChangeDate							*string	`json:"LastChangeDate"`
+	LastChangeTime							*string	`json:"LastChangeTime"`
 }

@@ -25,100 +25,48 @@ type SDC struct {
 }
 
 type Message struct {
-	ProductStock                                *ProductStock                                  `json:"ProductStock"`
-	ProductStockByBatch                         *ProductStockByBatch                           `json:"ProductStockByBatch"`
-	ProductStockByStorageBin                    *ProductStockByStorageBin                      `json:"ProductStockByStorageBin"`
-	ProductStockByStorageBinByBatch             *ProductStockByStorageBinByBatch               `json:"ProductStockByStorageBinByBatch"`
-	ProductStockAvailability                    *[]ProductStockAvailability                    `json:"ProductStockAvailability"`
-	ProductStockAvailabilityByBatch             *[]ProductStockAvailabilityByBatch             `json:"ProductStockAvailabilityByBatch"`
-	ProductStockAvailabilityByStorageBin        *[]ProductStockAvailabilityByStorageBin        `json:"ProductStockAvailabilityByStorageBin"`
-	ProductStockAvailabilityByStorageBinByBatch *[]ProductStockAvailabilityByStorageBinByBatch `json:"ProductStockAvailabilityByStorageBinByBatch"`
+	ProductStock				*[]ProductStock					`json:"ProductStock"`
+	ProductStockAvailability	*[]ProductStockAvailability		`json:"ProductStockAvailability"`
 }
 
 type ProductStock struct {
-	Product                   string  `json:"Product"`
-	BusinessPartner           int     `json:"BusinessPartner"`
-	Plant                     string  `json:"Plant"`
-	InventoryStockType        *string `json:"InventoryStockType"`
-	InventorySpecialStockType *string `json:"InventorySpecialStockType"`
-	ProductStock              float32 `json:"ProductStock"`
-}
-
-type ProductStockByBatch struct {
-	Product                   string  `json:"Product"`
-	BusinessPartner           int     `json:"BusinessPartner"`
-	Plant                     string  `json:"Plant"`
-	Batch                     string  `json:"Batch"`
-	InventoryStockType        *string `json:"InventoryStockType"`
-	InventorySpecialStockType *string `json:"InventorySpecialStockType"`
-	ProductStock              float32 `json:"ProductStock"`
-}
-
-type ProductStockByStorageBin struct {
-	Product                   string  `json:"Product"`
-	BusinessPartner           int     `json:"BusinessPartner"`
-	Plant                     string  `json:"Plant"`
-	StorageLocation           string  `json:"StorageLocation"`
-	StorageBin                string  `json:"StorageBin"`
-	InventoryStockType        *string `json:"InventoryStockType"`
-	InventorySpecialStockType *string `json:"InventorySpecialStockType"`
-	ProductStock              float32 `json:"ProductStock"`
-}
-
-type ProductStockByStorageBinByBatch struct {
-	Product                   string  `json:"Product"`
-	BusinessPartner           int     `json:"BusinessPartner"`
-	Plant                     string  `json:"Plant"`
-	StorageLocation           string  `json:"StorageLocation"`
-	StorageBin                string  `json:"StorageBin"`
-	Batch                     string  `json:"Batch"`
-	InventoryStockType        *string `json:"InventoryStockType"`
-	InventorySpecialStockType *string `json:"InventorySpecialStockType"`
-	ProductStock              float32 `json:"ProductStock"`
+	Product                                string                     `json:"Product"`
+	BusinessPartner                        int                        `json:"BusinessPartner"`
+	Plant                                  string                     `json:"Plant"`
+	SupplyChainRelationshipID              int                        `json:"SupplyChainRelationshipID"`
+	SupplyChainRelationshipDeliveryID      int                        `json:"SupplyChainRelationshipDeliveryID"`
+	SupplyChainRelationshipDeliveryPlantID int                        `json:"SupplyChainRelationshipDeliveryPlantID"`
+	Buyer                                  int                        `json:"Buyer"`
+	Seller                                 int                        `json:"Seller"`
+	DeliverToParty                         int                        `json:"DeliverToParty"`
+	DeliverFromParty                       int                        `json:"DeliverFromParty"`
+	DeliverToPlant                         string                     `json:"DeliverToPlant"`
+	DeliverFromPlant                       string                     `json:"DeliverFromPlant"`
+	InventoryStockType                     string                     `json:"InventoryStockType"`
+	ProductStock                           *float32                   `json:"ProductStock"`
+	CreationDate                           *string                    `json:"CreationDate"`
+	CreationTime                           *string                    `json:"CreationTime"`
+	LastChangeDate                         *string                    `json:"LastChangeDate"`
+	LastChangeTime                         *string                    `json:"LastChangeTime"`
 }
 
 type ProductStockAvailability struct {
-	Product                      string  `json:"Product"`
-	BusinessPartner              int     `json:"BusinessPartner"`
-	Plant                        string  `json:"Plant"`
-	ProductStockAvailabilityDate string  `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string `json:"InventoryStockType"`
-	InventorySpecialStockType    *string `json:"InventorySpecialStockType"`
-	AvailableProductStock        float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByBatch struct {
-	Product                      string  `json:"Product"`
-	BusinessPartner              int     `json:"BusinessPartner"`
-	Plant                        string  `json:"Plant"`
-	Batch                        string  `json:"Batch"`
-	ProductStockAvailabilityDate string  `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string `json:"InventoryStockType"`
-	InventorySpecialStockType    *string `json:"InventorySpecialStockType"`
-	AvailableProductStock        float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByStorageBin struct {
-	Product                      string  `json:"Product"`
-	BusinessPartner              int     `json:"BusinessPartner"`
-	Plant                        string  `json:"Plant"`
-	StorageLocation              string  `json:"StorageLocation"`
-	StorageBin                   string  `json:"StorageBin"`
-	ProductStockAvailabilityDate string  `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string `json:"InventoryStockType"`
-	InventorySpecialStockType    *string `json:"InventorySpecialStockType"`
-	AvailableProductStock        float32 `json:"AvailableProductStock"`
-}
-
-type ProductStockAvailabilityByStorageBinByBatch struct {
-	Product                      string  `json:"Product"`
-	BusinessPartner              int     `json:"BusinessPartner"`
-	Plant                        string  `json:"Plant"`
-	StorageLocation              string  `json:"StorageLocation"`
-	StorageBin                   string  `json:"StorageBin"`
-	Batch                        string  `json:"Batch"`
-	ProductStockAvailabilityDate string  `json:"ProductStockAvailabilityDate"`
-	InventoryStockType           *string `json:"InventoryStockType"`
-	InventorySpecialStockType    *string `json:"InventorySpecialStockType"`
-	AvailableProductStock        float32 `json:"AvailableProductStock"`
+	Product									string	`json:"Product"`
+	BusinessPartner							int		`json:"BusinessPartner"`
+	Plant									string	`json:"Plant"`
+	SupplyChainRelationshipID				int		`json:"SupplyChainRelationshipID"`
+	SupplyChainRelationshipDeliveryID		int		`json:"SupplyChainRelationshipDeliveryID"`
+	SupplyChainRelationshipDeliveryPlantID	int		`json:"SupplyChainRelationshipDeliveryPlantID"`
+	Buyer									int		`json:"Buyer"`
+	Seller									int		`json:"Seller"`
+	DeliverToParty							int		`json:"DeliverToParty"`
+	DeliverFromParty						int		`json:"DeliverFromParty"`
+	DeliverToPlant							string	`json:"DeliverToPlant"`
+	DeliverFromPlant						string	`json:"DeliverFromPlant"`
+	ProductStockAvailabilityDate			string	`json:"ProductStockAvailabilityDate"`
+	AvailableProductStock					*float32 `json:"AvailableProductStock"`
+	CreationDate							*string	`json:"CreationDate"`
+	CreationTime							*string	`json:"CreationTime"`
+	LastChangeDate							*string	`json:"LastChangeDate"`
+	LastChangeTime							*string	`json:"LastChangeTime"`
 }

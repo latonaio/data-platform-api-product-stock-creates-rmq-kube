@@ -29,6 +29,28 @@ func ConvertToProductStockUpdates(productStockdata dpfm_api_input_reader.Product
 	return productStock, nil
 }
 
+func ConvertToProductStockAvailabilityCreates(sdc *dpfm_api_input_reader.SDC) (*ProductStockAvailability, error) {
+	data := sdc.ProductStockAvailability
+
+	productStockAvailability, err := TypeConverter[*ProductStockAvailability](data)
+	if err != nil {
+		return nil, err
+	}
+
+	return productStockAvailability, nil
+}
+
+func ConvertToProductStockAvailabilityUpdates(productStockAvailabilitydata dpfm_api_input_reader.ProductStockAvailability) (*ProductStockAvailability, error) {
+	data := productStockAvailabilitydata
+
+	productStockAvailability, err := TypeConverter[*ProductStockAvailability](data)
+	if err != nil {
+		return nil, err
+	}
+
+	return productStockAvailability, nil
+}
+
 func TypeConverter[T any](data interface{}) (T, error) {
 	var dist T
 	b, err := json.Marshal(data)
